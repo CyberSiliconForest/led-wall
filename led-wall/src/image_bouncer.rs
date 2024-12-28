@@ -3,10 +3,7 @@ use embedded_graphics::geometry::{Point, Size};
 use embedded_graphics::pixelcolor::Rgb888;
 use rand::Rng;
 
-struct Dir {
-    pub x: i32,
-    pub y: i32,
-}
+use crate::util::Dir;
 
 pub struct ImageBouncer {
     viewport_size: Size,
@@ -67,7 +64,7 @@ impl ImageBouncer {
         tracing::trace!("New pos: ({}, {})", self.cursor.x, self.cursor.y);
     }
 
-    pub fn get_canvas_at(&mut self) -> CanvasAt<Rgb888> {
+    pub fn get_canvas_at(&self) -> CanvasAt<Rgb888> {
         self.canvas
             .place_at(Point::new(-self.cursor.x, -self.cursor.y))
     }
